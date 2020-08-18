@@ -5,9 +5,9 @@ from glob import iglob
 import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser()
-parser.add_argument("dir", help="directory to search", type=str)
+parser.add_argument("dirs", help="directory to search", type=str)
 args = parser.parse_args()
-search_dir = args.dir
+search_dir = args.dirs
 
 
 label_check = {"D00", "D01", "D10", "D11", "D20", "D40", "D43", "D44", "D50"}
