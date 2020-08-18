@@ -6,7 +6,7 @@ flag = "\nNote on the key flag:\nPath to text file containing instructions (fix.
        "label:del =>this means delete the annotation\n" \
        "label1:label2 =>this means convert label1 to label2\n\n" \
        "Example of a fix.txt file:\n" \
-       "Cat:keep\nLizard:del\nHusky:Dog\nDoberman:Dog\n"
+       "Lizard:del\nHusky:Dog\nDoberman:Dog\n"
 
 if str(sys.argv)[1] == "-h" or str(sys.argv)[1] == "--help":
     print(flag)
