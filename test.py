@@ -1,12 +1,8 @@
-label_check = {"D00", "D01", "D10", "D11", "D20", "D40", "D43", "D44", "D50"}
+flag = "\nNote on the key flag:\nPath to text file containing instructions (fix.txt)\n" \
+       "keep if it doesn't appear on the fix.txt file and it is in the .names file\n" \
+       "label:del =>this means delete the annotation\n" \
+       "label1:label2 =>this means convert label1 to label2\n\n" \
+       "Example of a fix.txt file:\n" \
+       "Lizard:del\nHusky:Dog\nDoberman:Dog\n"
 
-
-def check_for_wrong_labels(labels_list):
-    bad = [wrong_label for wrong_label in labels_list if wrong_label not in label_check]
-    if len(bad) == 0:
-        return None
-    else:
-        return bad
-    
-    
-print(check_for_wrong_labels(["D00", "HOLAA"]))
+print(flag)
