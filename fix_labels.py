@@ -1,3 +1,4 @@
+from glob import iglob
 import argparse
 import sys
 import os
@@ -16,11 +17,13 @@ if sys.argv[1] == "-h" or sys.argv[1] == "--help":
 parser = argparse.ArgumentParser()
 parser.add_argument("key", help="See note above", type=str)
 parser.add_argument("names", help="path to the .names file containing desired output labels", type=str)
-parser.add_argument("dir", help="path to text files or subdirs", type=str)
+parser.add_argument("dir", help="path to text files or subdirs with txt files", type=str)
+parser.add_argument("-out", "--output_dir", help="output directory", type=str)
 args = parser.parse_args()
-search_path = args.dir
+search_dir = args.dir
 key_path = args.key
 names_path = args.names
+output_dir = args.output_dir  # None if no argument specified
 
 
 def read_key(key_dir):
@@ -34,4 +37,43 @@ def read_key(key_dir):
         
     return keys
 
+def manage_output(output):
+    out_dir = ""
+    if output is None:
+        out_dir = "labels_output"
+    else:
+        if os.path.exists(output) and not os.path.isfile(output): 
+            # Checking if the directory is empty or not 
+            if not os.listdir(output): 
+                out_dir = output 
+            else: 
+                print(output)
+                cond = input("[WARNING] This directory is not empty\nDo you wish to continue Yes, No? [Y,N]: ")
+                if cond == "N":
+                    raise ValueError("Specified output dir is not empty!") 
+        else: 
+            raise ValueError("The path is either for a file or not valid")
+    
+    return out_dir
 
+
+class fixLabels:
+    def __init__(self, adir):
+        self.labels = yololibs.get_labels(adir)
+        self.files = [yololibs.fix_path(file_path) for file_path in iglob(os.path.join(adir, "*.txt"))]
+        
+
+key = read_key(key_path)
+names = yololibs.get_lines(names_path)
+
+print("[INFO] Searching for text files")
+if yololibs.get_immediate_subdirectories(search_dir) is None:
+    out_folder = manage_output(output_dir)
+
+else:
+    out_folder = manage_output(output_dir)
+    sub_dir = yololibs.get_immediate_subdirectories(search_dir)
+    for folder in sub_dir:
+        new_search = os.path.join(search_dir, folder)
+
+        print("[INFO] Searching for labels in text files in {}".format(new_search))
