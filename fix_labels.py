@@ -26,7 +26,12 @@ names_path = args.names
 def read_key(key_dir):
     keys = dict()
     key_list = yololibs.get_lines(key_dir)
-    for k in range(len(key_list)):
-        key_list[k] = str(key_list[k]).split(':')
     
-    
+    for k1 in range(len(key_list)):
+        key_list[k1] = str(key_list[k1]).split(':')
+    for k2 in range(len(key_list)):
+        keys[str(key_list[k2][0])] = str(key_list[k2][1])
+        
+    return keys
+
+
