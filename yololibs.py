@@ -15,14 +15,14 @@ def get_immediate_subdirectories(a_dir):
     else:
         return dirs
     
+# get lines in a file and place in a list
+def get_lines(file_path):
+    file_2read = open(file_path, 'r')
+    lines = [w.replace('\n', '') for w in file_2read.readlines()]
+    file_2read.close()
+    return lines
 
-def get_names(names_path):
-    names_file = open(names_path, 'r')
-    names_in_file = [w.replace('\n', '') for w in names_file.readlines()]
-    names_file.close()
-    return names_in_file
-
-
+# get labels from the _darknet.labels files
 def get_labels(in_dir):
     darknet_lables_file = open(os.path.join(in_dir, "_darknet.labels"), 'r')
     labels_in_dir = [w.replace('\n', '') for w in darknet_lables_file.readlines()]
