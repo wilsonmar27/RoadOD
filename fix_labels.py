@@ -41,16 +41,28 @@ def manage_output(output):
     out_dir = ""
     if output is None:
         out_dir = "labels_output"
+        if not os.listdir(out_dir): 
+            os.makedirs(out_dir)
+        else: 
+            print(output)
+            cond = input("[WARNING] This directory is not empty\nDo you wish to continue Yes, No? [Y,N]: ")
+            if cond == "N" or "n":
+                raise ValueError("Specified output dir is not empty!")
+            elif cond == "Y" or "y":
+                os.makedirs(out_dir)
     else:
         if os.path.exists(output) and not os.path.isfile(output): 
             # Checking if the directory is empty or not 
-            if not os.listdir(output): 
-                out_dir = output 
+            if not os.listdir(output):
+                out_dir = output
+                os.makedirs(out_dir)
             else: 
                 print(output)
                 cond = input("[WARNING] This directory is not empty\nDo you wish to continue Yes, No? [Y,N]: ")
-                if cond == "N":
-                    raise ValueError("Specified output dir is not empty!") 
+                if cond == "N" or "n":
+                    raise ValueError("Specified output dir is not empty!")
+                elif cond == "Y" or "y":
+                    os.makedirs(out_dir)
         else: 
             raise ValueError("The path is either for a file or not valid")
     
@@ -58,13 +70,25 @@ def manage_output(output):
 
 
 class fixLabels:
-    def __init__(self, adir):
+    def __init__(self, adir:str):
         self.labels = yololibs.get_labels(adir)
         self.files = [yololibs.fix_path(file_path) for file_path in iglob(os.path.join(adir, "*.txt"))]
-        
+    
+    def new_version(self, akey:dict, target_names:list, out_path:str):
+        for path in self.files:
+            if os.path.getsize(path) != 0:  # if file is empty pass
+                f = open(path, 'r')
+                lines = f.readlines()
+                f.close()
+                for line in lines:
+                    for label in self.labels:
+                        if self.labels[int(line[0])] == label:
+                            pass      
+
 
 key = read_key(key_path)
 names = yololibs.get_lines(names_path)
+output = manage_output(output_dir)
 
 print("[INFO] Searching for text files")
 if yololibs.get_immediate_subdirectories(search_dir) is None:
