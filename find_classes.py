@@ -1,12 +1,16 @@
 import os
 import argparse
-from glob import iglob
 import yololibs
+import numpy as np
+from glob import iglob
+import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser()
 parser.add_argument("dir", help="directory to search", type=str)
+parser.add_argument("--names", help="directory to names file if not analizing .labels", type=str)
 args = parser.parse_args()
 search_dir = args.dir
+names_path = args.names
 
 label_check = {"D00", "D01", "D10", "D11", "D20", "D40", "D43", "D44", "D50"}
 
@@ -19,9 +23,55 @@ def check_for_wrong_labels(labels_list, label_checker):
         return bad
 
 
+def plot(labels_dict, total_files, empty_files):
+    found_labels = list(labels_dict)
+    found_labels_val = list(labels_dict.values())  # this gets the value from the dictoinary
+    not_empty = total_files - empty_files
+
+    x = np.arange(len(found_labels))  # the label locations
+    width = 0.4  # the width of the bars
+
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(found_labels, found_labels_val, width)
+
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_ylabel('Cantidad')
+    ax.set_xlabel('Tipo de defecto (Etiqueta)')
+    ax.set_xticks(x)
+    ax.set_xticklabels(found_labels)
+
+    def autolabel(rects):
+        """Attach a text label above each bar in *rects*, displaying its height."""
+        for rect in rects:
+            height = rect.get_height()
+            ax.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height - 5),
+                        xytext=(0, 1),  # 3 points vertical offset
+                        fontsize=9,
+                        textcoords="offset points",
+                        ha='center', va='bottom')
+
+    autolabel(rects1)
+
+    textstr = "Fotos: {}\nSin Etiquetas: {}\nCon Etiquetas: {}".format(total_files, empty_files, not_empty)
+
+    # these are matplotlib.patch.Patch properties
+    props = dict(boxstyle='round', facecolor='wheat', alpha=0.3)
+
+    # place a text box in upper left in axes coords
+    ax.text(0.65, 0.95, textstr, transform=ax.transAxes, fontsize=9,
+            verticalalignment='top', bbox=props)
+
+    plt.show()
+
+
 class LabelCounter:
     def __init__(self, adir):
-        self.labels = yololibs.get_labels(adir)
+        self.labels = ""
+        if names_path is None:
+            self.labels = yololibs.get_labels(adir)
+        else:
+            self.labels = yololibs.get_lines(names_path)
         self.files = [yololibs.fix_path(file_path) for file_path in iglob(os.path.join(adir, "*.txt"))]
         self.total_files = len(self.files)
 
@@ -76,7 +126,7 @@ if yololibs.get_immediate_subdirectories(search_dir) is None:
     empty = find_label.empty_files
 
     print("[INFO] Ploting data")
-    yololibs.plot(found_labels_dict, total, empty)
+    plot(found_labels_dict, total, empty)
 
 else:
     sub_dir = yololibs.get_immediate_subdirectories(search_dir)
@@ -94,4 +144,4 @@ else:
         final_dict = yololibs.add_dict(final_dict, found_labels_dict, label_check)
 
     print("[INFO] Ploting data")
-    yololibs.plot(final_dict, total, empty)
+    plot(final_dict, total, empty)

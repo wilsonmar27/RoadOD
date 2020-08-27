@@ -1,6 +1,4 @@
 import os
-import numpy as np
-import matplotlib.pyplot as plt
 
 def fix_path(path):
     new_path = path.replace("\\", "/")
@@ -45,47 +43,3 @@ def add_dict(dict1, dict2, label_checker):
             dict1_p2.append(int(dict2_p2[i]))
     out_dict = {dict1_p1[k]: dict1_p2[k] for k in range(len(dict1_p1))}
     return out_dict
-
-
-def plot(labels_dict, total_files, empty_files):
-    found_labels = list(labels_dict)
-    found_labels_val = list(labels_dict.values())  # this gets the value from the dictoinary
-    not_empty = total_files - empty_files
-
-    x = np.arange(len(found_labels))  # the label locations
-    width = 0.6  # the width of the bars
-
-    fig, ax = plt.subplots()
-    rects1 = ax.bar(found_labels, found_labels_val, width)
-
-    # Add some text for labels, title and custom x-axis tick labels, etc.
-    ax.set_ylabel('Cantidad')
-    ax.set_xlabel('Tipo de defecto (Etiqueta)')
-    ax.set_xticks(x)
-    ax.set_xticklabels(found_labels)
-
-    def autolabel(rects):
-        """Attach a text label above each bar in *rects*, displaying its height."""
-        for rect in rects:
-            height = rect.get_height()
-            ax.annotate('{}'.format(height),
-                        xy=(rect.get_x() + rect.get_width() / 2, height - 5),
-                        xytext=(0, 1),  # 3 points vertical offset
-                        fontsize=9,
-                        textcoords="offset points",
-                        ha='center', va='bottom')
-
-    autolabel(rects1)
-
-    textstr = "Fotos: {}\nSin Etiquetas: {}\nCon Etiquetas: {}".format(total_files, empty_files, not_empty)
-
-    # these are matplotlib.patch.Patch properties
-    props = dict(boxstyle='round', facecolor='wheat', alpha=0.3)
-
-    # place a text box in upper left in axes coords
-    ax.text(0.65, 0.95, textstr, transform=ax.transAxes, fontsize=9,
-            verticalalignment='top', bbox=props)
-
-    plt.show()
-
-
