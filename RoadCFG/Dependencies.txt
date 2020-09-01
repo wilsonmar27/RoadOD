@@ -1,0 +1,9 @@
+Note: If you have already installed the ROS framework, Open-CV, 
+you don’t need to install it again as the prerequisites. It may break the existing packages.
+
+CMake >= 3.8
+CUDA 10.0 (For GPU)
+OpenCV >= 2.4 (For CPU and GPU)
+cuDNN >= 7.0 for CUDA 10.0 (for GPU)
+OpenMP (for CPU)
+Otras: make, git, g++
