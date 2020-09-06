@@ -54,10 +54,9 @@ zip RoadDataSet RoadDataSetV1.zip
 cd ..
 mv data/RoadDataSet/obj/ data/
 mv data/RoadDataSet/test/ data/
-cd data
 
-python3 ../../RoadOD/generate_set.py ./obj/ obj -out obj.txt
-python3 ../../RoadOD/generate_set.py ./test/ test -out test.txt
+python3 ../RoadOD/generate_set.py ./data/obj/ obj -out ./data/obj.txt
+python3 ../RoadOD/generate_set.py ./data/test/ test -out ./data/test.txt
 
 #get the weights to train
 wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137
