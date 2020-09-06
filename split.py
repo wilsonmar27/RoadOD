@@ -11,7 +11,7 @@ parser.add_argument("dir", help="directory to split in validation and test", typ
 parser.add_argument("percent", help="percent of images to go to validation (1-100)", type=int)
 args = parser.parse_args()
 search_dir = args.dir
-percent = int(args.percent)
+percent = int(args.percent)/100
 
 
 def collect_names(adir):
@@ -47,7 +47,6 @@ def split(somedir: str, percent: float):
         obj_jpg = path + '.jpg'
         shutil.move(obj_txt, './obj/')
         shutil.move(obj_jpg, './obj/')
-
 
 
 split(search_dir, percent)
