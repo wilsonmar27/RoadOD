@@ -40,18 +40,21 @@ mv road/trainv4/* road/
 mv road/trainv5/* road/
 mv road/trainv6/* road/
 
-rm -r trainv1/
-rm -r trainv2/
-rm -r trainv3/
-rm -r trainv4/
-rm -r trainv5/
-rm -r trainv6/
+rm -r road/trainv1/
+rm -r road/trainv2/
+rm -r road/trainv3/
+rm -r road/trainv4/
+rm -r road/trainv5/
+rm -r road/trainv6/
 
 #split dataset train and val with 20% images to validation
-python3 ../../RoadOD/split.py road/ 20
-zip road roadV1.zip
+cd road
+python3 ../../../RoadOD/split.py ./ 20
+cd ../
+zip -r roadV01.zip road/
 
-cd ..
+#Go to darknet dir
+cd ../
 mv data/road/obj/ data/
 mv data/road/test/ data/
 
