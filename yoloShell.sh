@@ -23,12 +23,12 @@ unzip G2datasetIMG.zip
 # restore dataset with original organization
 mv dataSetV01/ RoadDataSet/
 cd RoadDataSet
-mv dataSetV01/trainv1text/ trainv1/
-mv dataSetV01/trainv2text/ trainv2/
-mv dataSetV01/trainv3text/ trainv3/
-mv dataSetV01/trainv4text/ trainv4/
-mv dataSetV01/trainv5text/ trainv5/
-mv dataSetV01/trainv6text/ trainv6/
+mv dataSetV01/trainv1text/ trainv1/trainv1text
+mv dataSetV01/trainv2text/ trainv2/trainv2text
+mv dataSetV01/trainv3text/ trainv3/trainv3text
+mv dataSetV01/trainv4text/ trainv4/trainv4text
+mv dataSetV01/trainv5text/ trainv5/trainv5text
+mv dataSetV01/trainv6text/ trainv6/trainv6text
 rm -r dataSetV01
 
 mv trainv1/trainv1text/*.txt trainv1/
