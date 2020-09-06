@@ -1,4 +1,5 @@
 import os
+import re
 
 def fix_path(path):
     new_path = path.replace("\\", "/")
@@ -43,3 +44,30 @@ def add_dict(dict1, dict2, label_checker):
             dict1_p2.append(int(dict2_p2[i]))
     out_dict = {dict1_p1[k]: dict1_p2[k] for k in range(len(dict1_p1))}
     return out_dict
+
+
+def if_file_exists(output_file):
+    if os.path.exists(output_file):
+        print(output_file)
+        cond = input("[WARNING] This file already exists, and could cause to overwrite and "
+                    "PERMANENTLY lose file \n Do you wish to continue Yes, No? [Y,N]: ")
+        if cond == "N":
+            raise ValueError("File already exists!")
+
+
+def new_lines(files_list, typeOfData):
+    srch = typeOfData + '/(.+?).jpg'
+    for i in range(len(files_list)):
+        files_list[i] = re.search(srch, files_list[i]).group(1)
+        files_list[i] = 'data/' + typeOfData + '/' + files_list[i] +'.jpg\n'
+    return files_list
+
+
+def output_file(manage_out, files, fotoset):
+    out_dir = manage_out
+    if_file_exists(out_dir)
+    files = new_lines(files, fotoset)
+
+    with open(manage_out, 'w') as out2:
+        out2.writelines(files)
+        out2.close

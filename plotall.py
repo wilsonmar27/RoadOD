@@ -1,6 +1,7 @@
 import re
 import os
 import argparse
+from yololibs import if_file_exists
 
 parser = argparse.ArgumentParser()
 parser.add_argument("log_file", help="path to log file", type=str)
@@ -35,14 +36,6 @@ def find(log_path):
         csv_lines.append(csv_line)
     return total_loss, csv_lines
 
-
-def if_file_exists(output_file):
-    if os.path.exists(output_file):
-        print(output_file)
-        cond = input("[WARNING] This file already exists, and could cause to overwrite and "
-                    "PERMANENTLY lose file \n Do you wish to continue Yes, No? [Y,N]: ")
-        if cond == "N":
-            raise ValueError("File already exists!")
 
 if_file_exists(out_txt)
 if_file_exists(out_csv)
