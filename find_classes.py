@@ -8,11 +8,18 @@ import matplotlib.pyplot as plt
 parser = argparse.ArgumentParser()
 parser.add_argument("dir", help="directory to search", type=str)
 parser.add_argument("--names", help="directory to names file if not analizing .labels", type=str)
+parser.add_argument("--left", help="if 1, the text box displays on the left; default right 0", type=int)
 args = parser.parse_args()
 search_dir = args.dir
 names_path = args.names
+left = args.left
 
 label_check = {"D00", "D01", "D10", "D11", "D20", "D40", "D43", "D44", "D50"}
+
+if left is None or left == 0:
+    left = 0.65
+else:
+    left = 0.05
 
 
 def check_for_wrong_labels(labels_list, label_checker):
@@ -59,7 +66,7 @@ def plot(labels_dict, total_files, empty_files):
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.3)
 
     # place a text box in upper left in axes coords
-    ax.text(0.65, 0.95, textstr, transform=ax.transAxes, fontsize=9,
+    ax.text(left, 0.95, textstr, transform=ax.transAxes, fontsize=9,
             verticalalignment='top', bbox=props)
 
     plt.show()
