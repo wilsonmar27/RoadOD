@@ -58,8 +58,8 @@ cd ../
 mv data/road/obj/ data/
 mv data/road/test/ data/
 
-python3 ../RoadOD/generate_set.py ./data/obj/ obj -out ./data/obj.txt
-python3 ../RoadOD/generate_set.py ./data/test/ test -out ./data/test.txt
+python3 ../RoadOD/generate_set.py data/obj/ -out ./data/obj.txt
+python3 ../RoadOD/generate_set.py data/test/ -out ./data/test.txt
 
 #get the weights to train
 wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137

@@ -55,18 +55,16 @@ def if_file_exists(output_file):
             raise ValueError("File already exists!")
 
 
-def new_lines(files_list, typeOfData):
-    srch = typeOfData + '/(.+?).jpg'
+def new_lines(files_list):
     for i in range(len(files_list)):
-        files_list[i] = re.search(srch, files_list[i]).group(1)
-        files_list[i] = 'data/' + typeOfData + '/' + files_list[i] +'.jpg\n'
+        files_list[i] = files_list[i] +'\n'
     return files_list
 
 
-def output_file(manage_out, files, fotoset):
+def output_file(manage_out, files):
     out_dir = manage_out
     if_file_exists(out_dir)
-    files = new_lines(files, fotoset)
+    files = new_lines(files)
 
     with open(manage_out, 'w') as out2:
         out2.writelines(files)
