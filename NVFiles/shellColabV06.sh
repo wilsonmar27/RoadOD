@@ -15,10 +15,10 @@ make
 
 #obtain the dataset
 cd data
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1cSwWf_7wEKYzYEWC1bC_oi2IBPzJld0s' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1cSwWf_7wEKYzYEWC1bC_oi2IBPzJld0s" -O G2datasetIMG.zip && rm -rf /tmp/cookies.txt
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=18aGyZVwD_7JnUsoO6_boXbyG5dH9obrn' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=18aGyZVwD_7JnUsoO6_boXbyG5dH9obrn" -O G2datasetIMGV02.zip && rm -rf /tmp/cookies.txt
 wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1lHTX0YVyhZJ1iOdaUblDU_FsIdDt-w_-' -O G2dataSetV06.zip
 unzip G2dataSetV06.zip
-unzip G2datasetIMG.zip
+unzip G2datasetIMGV02.zip
 
 # restore dataset with original organization
 mv dataSetV06/ road/

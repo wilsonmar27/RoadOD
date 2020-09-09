@@ -15,22 +15,22 @@ make
 
 #obtain the dataset
 cd data
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1cSwWf_7wEKYzYEWC1bC_oi2IBPzJld0s' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1cSwWf_7wEKYzYEWC1bC_oi2IBPzJld0s" -O G2datasetIMG.zip && rm -rf /tmp/cookies.txt
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=18aGyZVwD_7JnUsoO6_boXbyG5dH9obrn' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=18aGyZVwD_7JnUsoO6_boXbyG5dH9obrn" -O G2datasetIMGV02.zip && rm -rf /tmp/cookies.txt
 wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1kfG0Ay9v-j-0zVk8YuJYdNxeetlIQvVY' -O G2dataSetV04.zip
 unzip G2dataSetV04.zip
-unzip G2datasetIMG.zip
+unzip G2datasetIMGV02.zip
 
 # restore dataset with original organization
-mv dataSetV06/ road/
+mv dataSetV04/ road/
 cd road
-mv dataSetV06/trainv1text/* trainv1/
-mv dataSetV06/trainv2text/* trainv2/
-mv dataSetV06/trainv3text/* trainv3/
-mv dataSetV06/trainv4text/* trainv4/
-mv dataSetV06/trainv5text/* trainv5/
-mv dataSetV06/trainv6text/* trainv6/
-mv dataSetV06/trainv7NVtext/* trainv7NV/
-rm -r dataSetV06
+mv dataSetV04/trainv1text/* trainv1/
+mv dataSetV04/trainv2text/* trainv2/
+mv dataSetV04/trainv3text/* trainv3/
+mv dataSetV04/trainv4text/* trainv4/
+mv dataSetV04/trainv5text/* trainv5/
+mv dataSetV04/trainv6text/* trainv6/
+mv dataSetV04/trainv7NVtext/* trainv7NV/
+rm -r dataSetV04
 
 #Place dataset all in one folder
 cd ..
