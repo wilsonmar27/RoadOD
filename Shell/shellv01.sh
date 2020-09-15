@@ -1,4 +1,4 @@
-#! / bin / bash
+#!/bin/bash
 
 # clone darknet repository
 git clone https://github.com/AlexeyAB/darknet
