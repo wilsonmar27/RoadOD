@@ -16,11 +16,11 @@ sed -i 's/CUDNN_HALF=0/CUDNN_HALF=1/' Makefile
 make
 
 # obtener pesos 
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep- cookies de sesión --no-check-certificate 'https://docs.google.com/uc?export=download&id=1jAdquEHQw0hcPLEvUnERyIvqTc85xMfP'-O- | sed -rn 's /.* confirmar = ([0-9A-Za-z _] +). * / \ 1 \ n / p') & id =1jAdquEHQw0hcPLEvUnERyIvqTc85xMfP"-O yolov4-obj_1000.weights && rm -rf /tmp/cookies.txt
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1jAdquEHQw0hcPLEvUnERyIvqTc85xMfP' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1jAdquEHQw0hcPLEvUnERyIvqTc85xMfP" -O yolov4-obj_1000.weights && rm -rf /tmp/cookies.txt
 
 #obtain the dataset
 cd data
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep- cookies de sesión --no-check-certificate 'https://docs.google.com/uc?export=download&id=1DJmLHYCEyDah8g2E6n0f6NVTUPxu7wbs'-O- | sed -rn 's /.* confirmar = ([0-9A-Za-z _] +). * / \ 1 \ n / p') & id =1DJmLHYCEyDah8g2E6n0f6NVTUPxu7wbs"-O roadV01.zip && rm -rf /tmp/cookies.txt
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1DJmLHYCEyDah8g2E6n0f6NVTUPxu7wbs' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1DJmLHYCEyDah8g2E6n0f6NVTUPxu7wbs" -O roadV01.zip && rm -rf /tmp/cookies.txt
 unzip roadV01.zip
 cd ..
 
