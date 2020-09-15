@@ -1,0 +1,5 @@
+classes = 4
+train = ../V04/data/obj.txt
+valid = ../V04/data/test.txt
+names = ../V04/data/obj.names
+backup = ../V04/backup
