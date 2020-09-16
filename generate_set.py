@@ -15,5 +15,4 @@ if output is None:
     output = "out.txt"
 
 objFiles = [fix_path(file_path) for file_path in iglob(os.path.join(search_dir, "*.jpg"))]
-print(objFiles)
 output_file(output, objFiles)
