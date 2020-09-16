@@ -40,6 +40,3 @@ cp RoadOD/NVFiles/objV03.names darknet/data/
 mv darknet/cfg/3C_yolov4-obj.cfg darknet/cfg/yolov4-obj.cfg
 mv darknet/data/3C_obj.data darknet/data/obj.data
 mv darknet/data/objV03.names darknet/data/obj.names
-
-cd darknet
-./darknet detector train data/obj.data cfg/yolov4-obj.cfg yolov4-obj_1000.weights -dont_show -map -gpus 0,1 >> OUTPUT/historyV03_2.log

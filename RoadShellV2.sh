@@ -23,5 +23,25 @@ cp RoadOD/Shell/shellv05.sh V05/
 cp RoadOD/Shell/shellv06.sh V06/
 
 cd V01
-
 bash shellv01.sh
+cd ..
+
+cd V02
+bash shellv02.sh
+cd ..
+
+cd V03
+bash shellv03.sh
+cd ..
+
+cd V04
+bash shellv04.sh
+cd ..
+
+cd V05
+bash shellv05.sh
+cd ..
+
+cd V06
+bash shellv06.sh
+cd ..
