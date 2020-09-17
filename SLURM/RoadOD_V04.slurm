@@ -13,4 +13,4 @@ module load OpenCV/2.4
 module load cuDNN/7.0
 module load python/3.7
 
-srun ./darknet detector train data/obj.data cfg/yolov4-obj.cfg yolov4-obj_1000.weights -dont_show -map -gpus 0,1 >> OUTPUT/historyV04_2.log
+srun ./darknet detector train data/obj.data cfg/yolov4-obj.cfg yolov4-obj_1000.weights -dont_show -map -gpus 0,1 >> ../historyV04_2.log
