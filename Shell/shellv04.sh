@@ -22,6 +22,8 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 cd data
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1XqgdPqpyJausQe8MwSbzMjO0QpSpGl_E' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1XqgdPqpyJausQe8MwSbzMjO0QpSpGl_E" -O roadV04.zip && rm -rf /tmp/cookies.txt
 unzip roadV04.zip
+
+rm roadV04.zip
 cd ..
 
 mv data/road/obj data/
