@@ -9,17 +9,36 @@ parser = argparse.ArgumentParser()
 parser.add_argument("dir", help="directory to search", type=str)
 parser.add_argument("--names", help="directory to names file if not analizing .labels", type=str)
 parser.add_argument("--left", help="if 1, the text box displays on the left; default right 0", type=int)
+parser.add_argument("--size", help="Bar size. Value in ]0,1[, default 0.4", type=float)
+parser.add_argument("--fontsize", "-fs", help="Font size of text box, default 9", type=int)
+parser.add_argument("--y_limit_bottom", "-ylimb", help="Y axis bottom limit, default 0", type=int)
+parser.add_argument("--y_limit_top", "-ylimt", help="Y axis top limit", type=int)
 args = parser.parse_args()
 search_dir = args.dir
 names_path = args.names
+ylimb = args.y_limit_bottom
+ylimt = args.y_limit_top
+size = args.size
 left = args.left
+fontsize = args.fontsize
+ylimList = [ylimb, ylimt]
 
 label_check = {"D00", "D01", "D10", "D11", "D20", "D40", "D43", "D44", "D50"}
 
 if left is None or left == 0:
-    left = 0.53
+    left = 0.5
 else:
     left = 0.05
+
+if size is None or size == 0.4:
+    size = 0.4
+
+if fontsize is None or fontsize == 9:
+    fontsize = 9
+
+ylim = True
+if ylimb is None or ylimt is None:
+    ylim = False
 
 
 def check_for_wrong_labels(labels_list, label_checker):
@@ -36,7 +55,7 @@ def plot(labels_dict, total_files, empty_files):
     not_empty = total_files - empty_files
 
     x = np.arange(len(found_labels))  # the label locations
-    width = 0.4  # the width of the bars
+    width = size  # the width of the bars
 
     fig, ax = plt.subplots()
     rects1 = ax.bar(found_labels, found_labels_val, width)
@@ -45,6 +64,8 @@ def plot(labels_dict, total_files, empty_files):
     ax.set_ylabel('Cantidad')
     ax.set_xlabel('Tipo de defecto (Etiqueta)')
     ax.set_xticks(x)
+    if ylim:
+        ax.set_ylim(ylimList)
     ax.set_xticklabels(found_labels)
 
     def autolabel(rects):
@@ -66,7 +87,7 @@ def plot(labels_dict, total_files, empty_files):
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.3)
 
     # place a text box in upper left in axes coords
-    ax.text(left, 0.95, textstr, transform=ax.transAxes, fontsize=9,
+    ax.text(left, 0.95, textstr, transform=ax.transAxes, fontsize=fontsize,
             verticalalignment='top', bbox=props)
 
     plt.show()
