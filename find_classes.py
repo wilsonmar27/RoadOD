@@ -17,7 +17,7 @@ left = args.left
 label_check = {"D00", "D01", "D10", "D11", "D20", "D40", "D43", "D44", "D50"}
 
 if left is None or left == 0:
-    left = 0.65
+    left = 0.53
 else:
     left = 0.05
 
@@ -60,7 +60,7 @@ def plot(labels_dict, total_files, empty_files):
 
     autolabel(rects1)
 
-    textstr = "Fotos: {}\nSin Etiquetas: {}\nCon Etiquetas: {}".format(total_files, empty_files, not_empty)
+    textstr = "Total de Fotos: {}\nFotos sin Etiquetas: {}\nFotos con Etiquetas: {}".format(total_files, empty_files, not_empty)
 
     # these are matplotlib.patch.Patch properties
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.3)

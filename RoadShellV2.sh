@@ -13,7 +13,7 @@ mkdir V05/
 mkdir V06/
 
 #obtain proyect repo
-git clone https://strafe:ed141fea880130bcef18ca0b543cfdeb480236b6@github.com/wilsonmar27/RoadOD.git
+git clone https://github.com/wilsonmar27/RoadOD.git
 
 cp RoadOD/Shell/shellv01.sh V01/
 cp RoadOD/Shell/shellv02.sh V02/

@@ -36,7 +36,7 @@ mkdir V06/backup/
 # clone darknet repository
 git clone https://github.com/AlexeyAB/darknet
 #obtain proyect repo
-git clone https://strafe:ed141fea880130bcef18ca0b543cfdeb480236b6@github.com/wilsonmar27/RoadOD.git
+git clone https://github.com/wilsonmar27/RoadOD.git
 
 # change makefile to have GPU and OPENCV enabled
 cd darknet
