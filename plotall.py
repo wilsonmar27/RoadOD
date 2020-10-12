@@ -19,7 +19,8 @@ def find(log_path):
     f.close()
     total_loss = []
     total_mAP = []
-    csv_lines =['mAP,iter\n']
+    epocas = []
+    csv_lines =['iter, mAP\n']
     
     for i in range(len(lines)):
         if "avg loss" in lines[i]:
@@ -27,12 +28,16 @@ def find(log_path):
             loss = loss + "\n"
             total_loss.append(loss)
         if "mean_average_precision" in lines[i]:
+            for k in range(3000):
+                p = i - k
+                if "avg loss" in lines[p]:
+                    epocas.append(str(lines[p][1:5]))
+                    break
             mAP = str(re.search('= (.+?) \n', lines[i]).group(1))     
             total_mAP.append(mAP)
-    
-    for i in range(len(total_mAP)):
-        num = 1000 + i*100
-        csv_line = str(num) + "," + total_mAP[i] + "\n"
+
+    for j in range(len(total_mAP)):
+        csv_line = epocas[j] + "," + total_mAP[j] + "\n"
         csv_lines.append(csv_line)
     return total_loss, csv_lines
 
