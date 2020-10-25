@@ -15,9 +15,9 @@ if sys.argv[1] == "-h" or sys.argv[1] == "--help":
     print(flag)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("key", help="See note above", type=str)
-parser.add_argument("names", help="path to the .names file containing desired output labels", type=str)
-parser.add_argument("dir", help="path to text files or subdirs with txt files", type=str)
+parser.add_argument("-k", "--key", help="See note above", type=str, required=True)
+parser.add_argument("-n", "--names", help="path to the .names file containing desired output labels", type=str, required=True)
+parser.add_argument("-i", "--input_dir", help="path to text files or subdirs with txt files", type=str, required=True)
 parser.add_argument("-out", "--output_dir", help="output directory", type=str)
 args = parser.parse_args()
 search_dir = args.dir

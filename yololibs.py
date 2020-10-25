@@ -1,5 +1,6 @@
 import os
 import re
+from json import loads
 
 def fix_path(path):
     new_path = path.replace("\\", "/")
@@ -69,3 +70,10 @@ def output_file(manage_out, files):
     with open(manage_out, 'w') as out2:
         out2.writelines(files)
         out2.close
+
+
+def readjson(json_path):
+    with open(json_path, 'r') as f:
+        contents = f.read()
+        contents = loads(contents)
+    return contents

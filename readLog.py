@@ -23,10 +23,13 @@ def find(log_path):
     csv_lines =['iter, mAP\n']
     
     for i in range(len(lines)):
+        # finds all instances of avg loss in log file
         if "avg loss" in lines[i]:
             loss = str(re.search(', (.+?) avg loss', lines[i]).group(1))
             loss = loss + "\n"
             total_loss.append(loss)
+        
+        # finds all instances of mAP in log file
         if "mean_average_precision" in lines[i]:
             for k in range(3000):
                 p = i - k
