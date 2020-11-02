@@ -1,3 +1,9 @@
-[![MIT License][license-shield]][https://github.com/wilsonmar27/RoadOD/blob/master/LICENSE]
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/wilsonmar27/RoadOD/blob/master/LICENSE)
 
-# RoadOD
+# RoadOD (Object Detection)
+
+RoadOD is the GitHub Repo of the project *Real-Time Detection of Irregularities on the Road.*
+
+# Abstract
+Road conditions caused 34% of all the traffic accidents recorded in Costa Rica during the years 2015 through 2017. There are prevention systems like Anti-lock Braking System (ABS) and Electronic Stability Program (ESP) that reduce the severity of a loss of control on a vehicle. However, these systems alone may not be enough to prevent these catastrophes nor increase road safety. In addition to these systems, a device that acts sooner by warning the driver before an irregularity is present on the road may significantly reduce accidents caused by these malformations and thus making travel safer. We trained an object detector using the state of the art YOLOv4 framework to achieve real-time detection of risky road conditions. The dataset used to train a Deep Learning model influences the accuracy and precision of the model; consequently, we created six different datasets based on the Dataset for Global Road Damage Detection Challenge 2020 and images of our own. As a result, we trained the most efficient YOLOv4 object detector for the given set of images. A program that uses the developed computer model and collaboratively shares the location and data of risky road conditions with other users may significantly reduce road accidents caused solely by road conditions. This data may also be shared with authorities to increase road maintenance efficiency. Most research in the field aims to obtain the most accurate computer vision model, leaving behind detection speed. However, our model detects in real-time with a small decrease in accuracy.
+

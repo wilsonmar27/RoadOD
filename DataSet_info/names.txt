@@ -1,4 +1,3 @@
-https://www.groundai.com/project/road-damage-detection-using-deep-neural-networks-with-images-captured-through-a-smartphone/2
 https://github.com/sekilab/RoadDamageDetector/
 https://rdd2020.sekilab.global/
 {D00: Longitudinal Crack, D10: Transverse Crack, D20: Aligator Crack, D40: Pothole}
