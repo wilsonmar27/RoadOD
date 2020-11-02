@@ -3,13 +3,6 @@ import argparse
 from yololibs import readjson
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-j", "--json_file", help="json file with predictions", type=str, required=True)
-parser.add_argument("-out", "--output_dir", help="output directory", type=str)
-args = parser.parse_args()
-json_file = args.json_file
-output_dir = args.output_dir
-
 
 def boxImg(img, objects, out_dir):
     color_code = {'D00': [(0, 247, 255),'black'],
@@ -63,6 +56,13 @@ def boxImg(img, objects, out_dir):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-j", "--json_file", help="json file with predictions", type=str, required=True)
+    parser.add_argument("-out", "--output_dir", help="output directory", type=str)
+    args = parser.parse_args()
+    json_file = args.json_file
+    output_dir = args.output_dir
+    
     json_file = readjson(json_file)
     os.mkdir(output_dir)
     for element in json_file:
