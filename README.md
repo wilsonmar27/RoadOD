@@ -2,6 +2,8 @@
 
 # RoadOD (Object Detection)
 
+![logo](https://flowimage.flow.page/resize?img=https%3A%2F%2Fcdn.flowpage.com%2Fimages%2F88b8ee58-42ab-4d71-8c6c-d9f33160012b-profile-picture%3Fm%3D1603915459&w=130)
+
 RoadOD is the GitHub Repo of the project *Real-Time Detection of Irregularities on the Road.*
 
 # Abstract
@@ -89,4 +91,10 @@ python3 fix_labels.py -k [key] -n [names file] -i [dir of dataset] -out [output 
 
 ## Split dataset into a training and validation set
 
+[split.py](https://github.com/wilsonmar27/RoadOD/blob/master/split.py)
 
+Given directory of images and labels it will output a folder with the training set and a folder with the validation set.
+
+```text
+python3 split.py [dir of dataset] [percentage of images for validation (0-100)]
+```
