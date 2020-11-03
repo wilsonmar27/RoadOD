@@ -98,3 +98,47 @@ Given directory of images and labels it will output a folder with the training s
 ```text
 python3 split.py [dir of dataset] [percentage of images for validation (0-100)]
 ```
+
+## Generate a list of images from dataset
+
+Generates a text file containing a list of image paths from images in a directory.
+
+```bash
+python3 generate_set.py -i [dir containing the images you want to list] --output [output file name (optional, default "out.txt")]
+```
+
+## Training
+
+To train each version of the dataset we used the shell scripts found in [NVFiles]( https://github.com/wilsonmar27/RoadOD/tree/master/NVFiles), this would also generate a zip file containing the version of the dataset for further training.
+
+* [Colab notebook example](https://colab.research.google.com/drive/1pvkrWGjh1RgB9nj5n2hHeMaze6D8AiFq?usp=sharing)
+* [Further training example](https://colab.research.google.com/drive/1SlnqZOPlLb6kz5Ke0VSx-L1zidyD6rr2?usp=sharing)
+
+## Data analysis
+
+To analyze the log file the training returned, use [readLog.py]( https://github.com/wilsonmar27/RoadOD/blob/master/readLog.py)
+
+It will output a text file where each line is the average loss for each iteration and a csv file with the mAP values at the given iteration.
+
+```text
+python3 readLog.py [log file path] [text file output (loss)] [csv file output (mAP)]
+```
+
+When making predictions on a directory of images, the darknet framework outputs a json file containing the predictions. To display these predictions in the images use [boxImg.py](https://github.com/wilsonmar27/RoadOD/blob/master/boxImg.py)
+
+Change [line 8](https://github.com/wilsonmar27/RoadOD/blob/master/boxImg.py#L8) with your parameters.
+
+```bash
+python3 boxImage.py -j [json file] -out [output dir to place annotated images]
+```
+
+# Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
